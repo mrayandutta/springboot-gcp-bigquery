@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-gcp-bigquery
+spec:
+  selector:
+    matchLabels:
+      app: springboot-gcp-bigquery
+  replicas: 2 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      labels:
+        app: springboot-gcp-bigquery
+    spec:
+      containers:
+        - name: springboot-gcp-bigquery
+          image: springboot-gcp-bigquery:1.0 # Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080 # The port that the container is running on in the cluster
